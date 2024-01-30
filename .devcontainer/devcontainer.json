@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+{
+  "name": "Debian",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "golang:1.22rc2-bullseye",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "go.lintTool": "golangci-lint",
+        "go.testTimeout": "3600s",
+        "go.testFlags": ["-v"],
+        "go.useLanguageServer": true,
+        "go.toolsManagement.autoUpdate": true,
+        "[go]": {
+          "editor.defaultFormatter": "golang.go"
+        }
+      },
+      "extensions": ["esbenp.prettier-vscode", "golang.go"]
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "/bin/sh .devcontainer/install.sh"
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": ""
+}
